@@ -128,11 +128,12 @@ a:hover, a:focus-visible { color: var(--accent); }
     letter-spacing: 0.07em;
   }
 
-  .visual { max-height: none; min-height: 0; }
+  /* Image bleeds off the right edge, as on desktop. */
+  .visual { max-height: none; min-height: 0; margin-right: -16px; }
 
   .visual img {
     object-fit: contain;
-    object-position: center center;
+    object-position: left center;
   }
 
   .contact {
