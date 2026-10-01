@@ -16,9 +16,11 @@
   --accent: #2f5f95;
 }
 
-/* Desktop composition is designed at 1280 × 1265 and scales as one unit
-   so the whole page always fits the window without scrolling. */
-:root { --design-ratio: calc(1280 / 1265); }
+:root {
+  --pad-x: clamp(24px, 3.3vw, 56px);
+  --pad-y: clamp(24px, 4.5vh, 44px);
+  --gap: clamp(24px, 5vh, 52px);           /* same space above and below the image */
+}
 
 * { box-sizing: border-box; }
 
@@ -36,19 +38,16 @@ body {
 a { color: var(--ink); text-decoration: none; }
 a:hover, a:focus-visible { color: var(--accent); }
 
+/* Laptop / desktop: full width, left-aligned, fits the window with no scroll. */
 .page {
   height: 100vh;
   height: 100dvh;
   overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
 }
 
 .stage {
-  width: min(100vw, calc(100dvh * var(--design-ratio)));
-  container-type: inline-size;
-  padding: 2.5cqw;
+  height: 100%;
+  padding: var(--pad-y) 0 var(--pad-y) var(--pad-x);
   display: flex;
   flex-direction: column;
 }
@@ -57,40 +56,55 @@ a:hover, a:focus-visible { color: var(--accent); }
   margin: 0;
   font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 800;
-  font-size: 13.3cqw;
+  font-size: min(12.5vw, 16.5vh, 220px);
   line-height: 0.88;
   letter-spacing: -0.045em;
 }
 
 .sequence {
-  margin: 1.6cqw 0 0;
+  margin: clamp(10px, 1.8vh, 20px) 0 0;
   padding-left: 0.25em;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   gap: 0.8em;
-  font-size: max(16px, 1.56cqw);
+  font-size: clamp(17px, min(1.45vw, 2.7vh), 24px);
   font-weight: 500;
   letter-spacing: 0.12em;
 }
 
 .arrow { color: var(--muted); }
 
-/* Equal space above and below the image. */
-.visual { margin: 5.6cqw 0 0; }
-.visual img { display: block; width: 100%; height: auto; }
+/* The image starts at the left margin and runs off the right edge of the window.
+   Narrower windows trim the outer ripples on the right, never the left. */
+.visual {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 120px;
+  max-height: calc((100vw - var(--pad-x)) / 3.4);
+  margin: var(--gap) 0;
+}
+
+.visual picture { position: absolute; inset: 0; }
+
+.visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left center;
+}
 
 .theme-light { display: none; }
 [data-theme="light"] .theme-light { display: block; }
 [data-theme="light"] .theme-dark { display: none; }
 
 .contact {
-  margin-top: 5.6cqw;
   padding-left: 0.15em;
   display: flex;
   flex-direction: column;
   gap: 0.3em;
-  font-size: max(12px, 1.1cqw);
+  font-size: clamp(12px, min(1vw, 1.9vh), 15px);
   line-height: 1.45;
   letter-spacing: 0.02em;
 }
@@ -100,14 +114,9 @@ a:hover, a:focus-visible { color: var(--accent); }
 
 /* Phones: vertical image, whole page on one screen, contact on two lines. */
 @media (max-width: 640px) {
-  .page { display: block; }
+  :root { --gap: clamp(20px, 4svh, 36px); }
 
-  .stage {
-    width: auto;
-    height: 100%;
-    container-type: normal;
-    padding: 20px 16px 0;
-  }
+  .stage { padding: 20px 16px 0; }
 
   .mark { font-size: min(15.5vw, 9svh); }
 
@@ -119,24 +128,15 @@ a:hover, a:focus-visible { color: var(--accent); }
     letter-spacing: 0.07em;
   }
 
-  .visual {
-    margin-top: clamp(20px, 4svh, 36px);
-    flex: 1 1 auto;
-    min-height: 0;
-    position: relative;
-  }
-
-  .visual picture { position: absolute; inset: 0; }
+  .visual { max-height: none; min-height: 0; }
 
   .visual img {
-    width: 100%;
-    height: 100%;
     object-fit: contain;
     object-position: center center;
   }
 
   .contact {
-    margin-top: clamp(20px, 4svh, 36px);
+    margin-top: 0;
     padding: 0 0 max(16px, env(safe-area-inset-bottom));
     flex-direction: row;
     flex-wrap: wrap;
