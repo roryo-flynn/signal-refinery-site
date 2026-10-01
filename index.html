@@ -1,59 +1,58 @@
 <!doctype html>
-<html lang="en">
+<!-- Colour scheme: set data-theme to "dark" (black & white) or "light" (original colours). -->
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Signal Refinery — Analytics · Data · AI</title>
-    <meta name="description" content="Signal Refinery. Analytics, data, and AI in New York." />
-    <meta name="theme-color" content="#eef1f2" />
+    <meta name="description" content="Signal Refinery. Analytics, data, and AI in New York. Data → signal → insight → action." />
+    <meta name="theme-color" content="#0f1110" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Signal Refinery" />
-    <meta property="og:description" content="Analytics · Data · AI" />
+    <meta property="og:description" content="Data → signal → insight → action" />
     <meta property="og:url" content="https://signalrefinery.co/" />
     <link rel="canonical" href="https://signalrefinery.co/" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&amp;display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main>
-      <header class="masthead" aria-labelledby="site-title">
-        <h1 id="site-title"><span>SIGNAL</span><span>REFINERY</span></h1>
-      </header>
+    <div class="page">
+      <main class="stage">
+        <h1 class="mark">SIGNAL<br />REFINERY</h1>
 
-      <section class="process" aria-labelledby="process-title">
-        <h2 id="process-title" class="visually-hidden">From data to action</h2>
-        <div class="stages">
-          <figure class="stage stage-data">
-            <div class="field" data-stage="data" aria-hidden="true"></div>
-            <figcaption>data</figcaption>
-          </figure>
-          <figure class="stage stage-signal">
-            <div class="field" data-stage="signal" aria-hidden="true"></div>
-            <figcaption>signal</figcaption>
-          </figure>
-          <figure class="stage stage-insight">
-            <div class="field" data-stage="insight" aria-hidden="true"></div>
-            <figcaption>insight</figcaption>
-          </figure>
-          <figure class="stage stage-action">
-            <div class="field" data-stage="action" aria-hidden="true">
-              <span class="action-dot"></span>
-            </div>
-            <figcaption>action</figcaption>
-          </figure>
-        </div>
-      </section>
-    </main>
+        <p class="sequence" aria-label="Data, signal, insight, action">
+          <span>data</span><span class="arrow" aria-hidden="true">→</span>
+          <span>signal</span><span class="arrow" aria-hidden="true">→</span>
+          <span>insight</span><span class="arrow" aria-hidden="true">→</span>
+          <span>action</span>
+        </p>
 
-    <footer>
-      <div class="footer-identity">
-        <p class="footer-name">Signal Refinery</p>
-        <p>Analytics <span aria-hidden="true">·</span> Data <span aria-hidden="true">·</span> AI</p>
-        <p>New York</p>
-        <a class="footer-email" href="mailto:hello@signalrefinery.co">hello@signalrefinery.co</a>
-      </div>
-    </footer>
+        <figure class="visual">
+          <picture class="theme-dark">
+            <source media="(max-width: 640px)" srcset="images/ripple-mobile-dark.svg" />
+            <img src="images/ripple-desktop-dark.svg" width="1140" height="520"
+                 alt="Overlapping circles of raw data are cut cleanly into rows of dots, which converge on one point and send rings outward." />
+          </picture>
+          <picture class="theme-light">
+            <source media="(max-width: 640px)" srcset="images/ripple-mobile-light.svg" />
+            <img src="images/ripple-desktop-light.svg" width="1140" height="520"
+                 alt="Overlapping circles of raw data are cut cleanly into rows of dots, which converge on one point and send rings outward." />
+          </picture>
+        </figure>
 
-    <script src="visual.js"></script>
+        <footer class="contact">
+          <span class="name">Signal Refinery</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <span class="muted">Analytics · Data · AI</span>
+          <span class="break" aria-hidden="true"></span>
+          <span class="muted">New York</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <a href="mailto:hello@signalrefinery.co">hello@signalrefinery.co</a>
+        </footer>
+      </main>
+    </div>
   </body>
 </html>

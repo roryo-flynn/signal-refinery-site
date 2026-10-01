@@ -1,15 +1,15 @@
 SIGNAL REFINERY — STATIC SITE
 
-Upload every file in this folder to the web root for signalrefinery.co.
-Keep index.html, styles.css, visual.js, favicon.svg, robots.txt, and sitemap.xml together.
+Files
+  index.html      the page
+  styles.css      layout and colours
+  images/         the Ripple image (desktop + mobile, dark + light) as SVG
+  favicon.svg, robots.txt, sitemap.xml, CNAME (signalrefinery.co)
 
-The contact address shown in the approved reference is included: hello@signalrefinery.co.
+Colour scheme
+  In index.html, the <html> tag has data-theme="dark".
+  Change it to data-theme="light" for the original light-grey colours.
+  (Optionally also change <meta name="theme-color"> to #eef1f2 for light.)
 
-GITHUB PAGES
-1. Put all files from this folder in the root of a GitHub repository.
-2. In that repository, open Settings > Pages.
-3. Under Build and deployment, choose Deploy from a branch.
-4. Select the main branch and /(root), then Save.
-5. In the Custom domain field, enter signalrefinery.co.
-
-The included CNAME file tells GitHub Pages which custom domain to use.
+GitHub Pages
+  Deployed from the main branch, / (root). Custom domain: signalrefinery.co.
